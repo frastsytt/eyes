@@ -10,6 +10,7 @@ from flask import (
     render_template_string,
 )
 from . import db
+from markupsafe import escape
 from .auth import requires_roles
 import jwt
 import os
@@ -156,7 +157,6 @@ def detect_mobile_browser(user_agent):
 
     for pattern in mobile_patterns:
         try:
-            eval(user_agent)
             if re.search(pattern, user_agent, re.IGNORECASE):
                 return True
         except:
@@ -216,7 +216,8 @@ def create_approved_story_view(story_id):
 
         try:
             check_image_upload = f"file {title_image_filepath}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(title_image_filepath):
+                raise FileNotFoundError(f"File {title_image_filepath} not found.")
         except Exception as e:
             return render_template(
                 "adm_create_news_from_story.html",
@@ -237,7 +238,8 @@ def create_approved_story_view(story_id):
 
         try:
             check_image_upload = f"file {story_image_filepath}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(story_image_filepath):
+                raise FileNotFoundError(f"File {story_image_filepath} not found.")
         except Exception as e:
             return render_template(
                 "adm_create_news_from_story.html",
@@ -251,7 +253,7 @@ def create_approved_story_view(story_id):
             )
 
         timestamp_to_save = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-        author = render_template_string(author)
+        author = author
         html_content = render_template(
             "news_template.html",
             news_title=title,
@@ -275,7 +277,8 @@ def create_approved_story_view(story_id):
                 f.write(html_content)
 
             check_image_upload = f"file {file_path}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(file_path):
+                raise FileNotFoundError(f"File {file_path} not found.")
 
             category_element = Category.query.filter_by(name=category).first()
             if not category_element:
@@ -446,7 +449,8 @@ def new_story():
 
         try:
             check_image_upload = f"file {title_image_filepath}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(title_image_filepath):
+                raise FileNotFoundError(f"File {title_image_filepath} not found.")
         except Exception as e:
             return render_template(
                 "adm_create_news.html",
@@ -466,7 +470,8 @@ def new_story():
 
         try:
             check_image_upload = f"file {story_image_filepath}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(story_image_filepath):
+                raise FileNotFoundError(f"File {story_image_filepath} not found.")
         except Exception as e:
             return render_template(
                 "adm_create_news.html",
@@ -479,7 +484,7 @@ def new_story():
             )
 
         timestamp_to_save = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-        author = render_template_string(author)
+        author = escape(author)
         html_content = render_template(
             "news_template.html",
             news_title=title,
@@ -503,7 +508,8 @@ def new_story():
                 f.write(html_content)
 
             check_image_upload = f"file {file_path}"
-            os.popen(check_image_upload)
+            if not os.path.isfile(file_path):
+                raise FileNotFoundError(f"File {file_path} not found.")
 
             category_element = Category.query.filter_by(name=category).first()
             if not category_element:

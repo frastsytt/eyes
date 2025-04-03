@@ -8,9 +8,9 @@ from flask import (
     jsonify,
     g,
     Response,
-    escape,
     render_template_string,
 )
+from markupsafe import escape
 from . import db
 from .auth import requires_roles
 import jwt
@@ -251,7 +251,7 @@ def user():
     )
 
     new_user = WebUser.query.filter_by(email=email).first()
-    username = render_template_string(escape(new_user.username))
+    username = escape(new_user.username)
     return render_template(
         "home.html",
         title="Home",
@@ -346,8 +346,8 @@ def upload():
                     image.save(filepath)
 
                     try:
-                        check_image_upload = f"file {filepath}"
-                        os.popen(check_image_upload)
+                        if not os.path.isfile(filepath):
+                            raise FileNotFoundError(f"File {filepath} not found.")
                     except Exception as e:
                         continue
                     try:
@@ -417,8 +417,8 @@ def view_story(filename):
         author = user.username
         new_comment = {
             "timestamp": com.timestamp,
-            "author": render_template_string(escape(user.username)),
-            "content": render_template_string(escape(com.content)),
+            "author": escape(user.username),
+            "content": escape(com.content),
         }
         return_comments.append(new_comment)
 
