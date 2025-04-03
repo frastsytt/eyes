@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        {% if title %}
+        {{ title }} | Berylia's Eyes
+        {% else %}
+        Berylia's Eyes
+        {% endif %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/date.js') }}"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"
+        integrity="sha512-Y5n0fbohPllOQ21fTwM/h9sQQ/1a1h5KhweGhu2zwD8lAoJnTgVa7NIrFa1bRDIMQHixtyuRV2ubIx+qWbGdDA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    {% block more_css %}
+    {% endblock %}
+
+    {% block more_js %}
+    {% endblock %}
+
+    <script>
+        const MQTT_HOST = "{{ mqtt_host }}";
+        const MQTT_PORT = "{{ mqtt_port }}";
+        const MQTT_PROXY_PORT = "{{ mqtt_proxy_port }}";
+        const MQTT_USERNAME = "{{ mqtt_username }}";
+        const MQTT_PASSWORD = "{{ mqtt_password }}";
+        const MQTT_TOPIC_CHAT_RECV = "{{ mqtt_topic_chat_recv }}";
+        const MQTT_TOPIC_CHAT_SEND = "{{ mqtt_topic_chat_send }}";
+        const MQTT_TOPIC_NOTIFICATION_SEND = "{{ mqtt_topic_notification_send }}"
+    </script>
+
+    {% if user_email %}
+    <script>
+        const user_email = "{{ user_email }}";
+    </script>
+    {% endif %}
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+
+</head>
+
+<body class="baseline">
+    <div class="baseline-div">
+
+        {% block add_title %}
+        {% endblock %}
+        <div class="baseline-row">
+            {% include 'navbar.html' %}
+        </div>
+        {% block content %}
+        {% endblock %}
+
+        <div class="baseline-row">
+            <div id="notificationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" title="Close">&times;</span>
+                    <h2>Notifications</h2>
+                    <b>Latest news</b>
+                    <ul id="notificationList">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        ©
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+
+
+    {% block add_chat %}
+    {% include 'chat.html' %}
+    {% endblock %}
+
+</body>
+
+</html>

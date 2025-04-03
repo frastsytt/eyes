@@ -1,0 +1,28 @@
+.admin-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5%;
+    gap: 20px;
+}
+
+.dashboard-button {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    background-color: #343a40;
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 100px;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: #495057;
+    transform: translateY(-5px);
+}

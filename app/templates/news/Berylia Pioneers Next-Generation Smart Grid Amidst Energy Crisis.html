@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Berylia Pioneers Next-Generation Smart Grid Amidst Energy Crisis </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/afa9acb0-ea2d-46c6-96aa-f2ef41bbf294_smartgrid.jpg" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2024-07-25 10:11:11 | Innovation | Leah Cox </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                In response to ongoing energy disruptions in the conflict-affected Prophyria region, Berylia has
+                launched a revolutionary smart grid system that integrates renewable energy, blockchain technology, and
+                real-time monitoring to secure the nation’s energy future.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    Facing unprecedented challenges in its natural gas supply due to regional conflict, the Berylia
+                    government has joined forces with local tech startups to unveil a cutting-edge smart grid system.
+                    This innovative project deploys advanced IoT sensors combined with blockchain-based energy tracking
+                    to monitor energy flows, detect inefficiencies, and prevent tampering in real time. The pilot
+                    program, currently underway in both urban centers and rural areas—including critical zones near
+                    Prophyria—aims to mitigate supply disruptions, lower energy costs, and bolster national security
+                    amid geopolitical instability.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/31ede7db-a94a-408b-996f-b73013ee5dc3_blockchaingrid.png"
+                    alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/kWMAVn6xtpk?si=8wN33UCwkmz9q5gA"
+                    title="Video related story" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen onerror="this.style.display='none';">
+                </iframe>
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    Government officials and industry innovators alike are optimistic about the transformative potential
+                    of this smart grid initiative. By integrating renewable energy sources such as solar and wind with
+                    advanced data analytics, the system promises to revolutionize energy management and enhance crisis
+                    response times. Early feedback from pilot regions is encouraging, with measurable improvements in
+                    energy efficiency and a reduction in system losses.
+
+                    Analysts predict that the successful implementation of this project could serve as a model for other
+                    nations facing similar energy challenges amid conflict. The initiative also holds significant
+                    promise for boosting Berylia’s EU integration prospects, as it showcases the country’s commitment to
+                    technological innovation and sustainable development. As domestic and international investors watch
+                    the pilot phase with keen interest, many are hopeful that this smart grid will usher in a new era of
+                    energy resilience and economic stability.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>innovation</a></li>
+
+                    <li><a>smart</a></li>
+
+                    <li><a>grid</a></li>
+
+                    <li><a>renewable</a></li>
+
+                    <li><a>energy</a></li>
+
+                    <li><a>blockchain</a></li>
+
+                    <li><a>energy</a></li>
+
+                    <li><a>crisis</a></li>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>technology</a></li>
+
+                    <li><a>startups</a></li>
+
+                    <li><a>sustainability</a></li>
+
+                    <li><a>conflict</a></li>
+
+                    <li><a>resilience</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

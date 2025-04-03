@@ -1,0 +1,154 @@
+.upload-news-container {
+    width: 70%;
+    max-width: 800px;
+    margin: 40px auto;
+    margin-top: -10%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+}
+
+.upload-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#newsStoryText1,
+#newsStoryText2,
+#newsShortDescription {
+    resize: vertical;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    min-height: 120px;
+}
+
+#images {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#contactInfo,
+#newsTitle,
+#newsAuthor,
+#newsVideoUrl,
+#newsKeywords {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.terms {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.terms label {
+    padding-top: 6px;
+    font-size: 0.9rem;
+}
+
+.terms a {
+    color: #2f3741;
+    text-decoration: underline;
+}
+
+.terms a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.btn-submit {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+
+@media (max-width: 700px) {
+    .upload-news-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+        margin-top: -45%;
+    }
+
+    .upload-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    #contactInfo,
+    #newsTitle,
+    #newsAuthor,
+    #newsVideoUrl,
+    #newsStoryText1,
+    #newsStoryText2,
+    #newsShortDescription,
+    #newsKeywords,
+    #images {
+        font-size: 1rem;
+    }
+
+    .btn-submit {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}

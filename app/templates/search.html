@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div class="search-container">
+    <div class="search-box">
+        <h2>Search news</h2>
+        <form action="{{ url_for('main.search') }}" method="GET">
+            <input type="text" name="query" id="searchInput" placeholder="titles, categories, keywords" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="search-recommendations">
+        <h3>Latest news</h3>
+        <ul>
+            {% if latest_stories %}
+            {% for st in latest_stories %}
+            <li><a href="{{ url_for('main.view_story', filename=st.filename) }}" class="recommendation">{{ st.title |
+                    safe }}</a></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<div class="search-results" id="searchResults">
+    {% if query_param %}
+    <h3>Results for {{query_param | safe}}:</h3>
+    {% endif %}
+    <ul>
+        <section class="featured-news">
+
+            {% for s_r in search_results %}
+            <div class="news-item">
+                <img src="{{ url_for('static', filename='images/news/' ~ s_r.first_image) }}" alt="Featured News">
+                <div class="news-content">
+                    <h3><a href="{{ url_for('main.view_story', filename=s_r.filename) }}">{{ s_r.title | safe }}</a>
+                    </h3>
+                    <p class="meta">{{ s_r.submission_date | safe }} | {{ s_r.category.name |
+                        safe }} | {{ s_r.author |
+                        safe }}</p>
+                    <p class="description">
+                        {{ s_r.short_description|truncate(150) }}
+                    </p>
+                    <a href="{{ url_for('main.view_story', filename=s_r.filename) }}" class="read-more">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </section>
+
+
+    </ul>
+
+</div>
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock %}

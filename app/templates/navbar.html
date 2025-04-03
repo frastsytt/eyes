@@ -1,0 +1,74 @@
+<nav>
+    <div class="navbar">
+        <div class="container nav-container">
+            <div class="hamburger-lines" id="hamburger">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+
+            <div class="logo">
+                <a href="{{ url_for('main.home') }}">
+                    <h1><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Eyes News Logo"></h1>
+                </a>
+            </div>
+            <div class="nav-icons">
+                {% if username %}
+                <div class="username-div" style="font-size: 18px;"><b>{{ username | safe }}</b></div>
+                {% endif %}
+                <a href="{{url_for('main.search')}}" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg></a>
+                <a href="{{url_for('profile.profile')}}" aria-label="Profile"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="26" height="26" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg></a>
+
+                <a href="#" aria-label="Notifications" id="openNotificationModal" class="has-notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                        class="bi bi-bell" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16a2 2 0 0 0 1.985-1.75H6.015A2 2 0 0 0 8 16zm.104-14.146a1 1 0 1 1-2.208 0 1 1 0 0 1 2.208 0zM8 1a5 5 0 0 0-4.546 2.916C2.832 4.864 2 6.15 2 7.5v.5c0 .828-.448 1.578-1.171 2.078A.5.5 0 0 0 1 11h14a.5.5 0 0 0 .171-.422C14.448 9.578 14 8.828 14 8v-.5c0-1.35-.832-2.636-1.454-3.584A5 5 0 0 0 8 1z" />
+                    </svg>
+                </a>
+
+
+                <a href="{{ url_for('auth.logout') }}" aria-label="Logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                        class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                        <path fill-rule="evenodd"
+                            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                    </svg>
+                </a>
+            </div>
+
+            <ul class="menu-items" id="menu">
+
+                {% if admin_role == 'admin' %}
+                <div class="items-div"><a href="{{url_for('admin.admin')}}">Home</a></div>
+                <div class="items-div"><a href="{{url_for('admin.view_news')}}">See All the News</a></div>
+                <div class="items-div"><a href="{{url_for('admin.review_news')}}">Submitted Stories</a></div>
+                <div class="items-div"><a href="{{url_for('admin.new_story')}}">Create Story</a></div>
+                <div class="items-div"><a href="{{url_for('profile.profile')}}">Profile</a></div>
+
+                {% else %}
+
+                <div class="items-div"><a href="{{url_for('main.home')}}">Home</a></div>
+                <div class="items-div"><a href="{{url_for('main.search')}}">Search</a></div>
+                <div class="items-div"><a href="{{url_for('profile.profile')}}">Profile</a></div>
+                <div class="items-div"><a href="{{url_for('main.upload')}}">Submit your story</a></div>
+
+                {% endif %}
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="{{ url_for('static', filename='js/navbar.js') }}"></script>

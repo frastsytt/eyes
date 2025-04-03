@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Crimsonia on the Move: Massive Operation Set for Spring 2025 </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/14072b39-0468-4524-98dc-ea791cf715fc_movement.jpeg" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2025-01-11 09:59:44 | Politics | Chloe Howell </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                New intelligence reports from Berylia's Information and Intelligence Service (IIS) reveal a marked surge
+                in logistical activities in northern Crimsonia. Analysts warn that these movements may signal the
+                preparation for a large-scale military operation set to launch in Spring 2025, potentially escalating
+                the long-standing conflict over the disputed Prophyria region.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    In recent months, multiple intelligence sources—including signal intelligence (SIGINT), human
+                    intelligence (HUMINT), and imagery reconnaissance (IMINT)—have detected an unusual concentration of
+                    military logistics in northern Crimsonia. Officials within the Berylia IIS assert that the buildup
+                    is not coincidental; it appears to be a coordinated effort in anticipation of a significant
+                    operation planned to commence once weather conditions improve in Spring 2025.
+
+                    The increased activity is seen as part of Crimsonia’s broader strategy to capitalize on the current
+                    stalemate in the Prophyria region—a territory where ethnic and geopolitical tensions have been
+                    simmering since the initial takeover of the Galbreath 1 gas platform and the Roseiron liquefaction
+                    facility. Experts believe that this planned offensive could be designed either to consolidate
+                    Crimsonian gains in Prophyria or to destabilize Berylia’s efforts to restore control over the
+                    region, thereby leveraging both kinetic and non-kinetic means to influence the outcome of the
+                    conflict.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/20a019b0-2202-4dc9-ae90-32131e163267_satelite_movement.jpeg"
+                    alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    Military analysts and regional experts have voiced deep concerns over the potential ramifications of
+                    the anticipated Crimsonian operation. According to senior officials, if Crimsonia proceeds as
+                    planned, the ensuing conflict could not only intensify the longstanding territorial dispute but also
+                    jeopardize critical energy infrastructure in the area—most notably the vital natural gas pipelines
+                    that underpin Berylia's energy strategy.
+
+                    The proposed offensive comes at a time when Berylia is cautiously trying to avoid further civilian
+                    casualties and infrastructure damage. With the international community divided over the issue—some
+                    viewing it as an internal security matter while others remain apprehensive about the stability of
+                    energy supplies—the conflict is poised to become even more complex. In addition to conventional
+                    military maneuvers, recent cyber operations linked to the separatist ABC group have already targeted
+                    key government systems, amplifying the sense of urgency and unpredictability surrounding the
+                    situation.
+
+                    Political observers suggest that this next phase of the conflict could redefine the regional balance
+                    of power. As both sides reinforce their positions, Berylia's calls for international assistance have
+                    yet to garner decisive support. Meanwhile, Crimsonia’s tactical moves, if realized, could prompt a
+                    rapid escalation of hostilities, drawing in not only neighboring states but also international
+                    stakeholders with vested interests in the region’s energy resources.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>Crimsonia</a></li>
+
+                    <li><a>operation</a></li>
+
+                    <li><a>Spring</a></li>
+
+                    <li><a>2025</a></li>
+
+                    <li><a>intelligence</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>conflict</a></li>
+
+                    <li><a>military</a></li>
+
+                    <li><a>buildup</a></li>
+
+                    <li><a>cyber</a></li>
+
+                    <li><a>operations</a></li>
+
+                    <li><a>separatist</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

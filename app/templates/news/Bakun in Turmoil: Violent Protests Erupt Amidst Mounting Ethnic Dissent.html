@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Bakun in Turmoil: Violent Protests Erupt Amidst Mounting Ethnic Dissent </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/02fdc276-4519-49bc-ade8-c2b00cae2c67_violent_protest.png"
+            alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2024-12-19 17:24:37 | Politics | Leah Cox </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                Bakun, the contested regional capital in Prophyria, became the epicenter of violent protests as
+                thousands of citizens, fueled by longstanding ethnic grievances, clashed with security forces. The
+                unrest underscores deep-seated issues of discrimination and political neglect amid the ongoing
+                territorial dispute.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    Last week, thousands of demonstrators converged in Bakun to demand greater political autonomy and
+                    fair treatment for ethnic Crimsonians—a community that has long alleged systematic marginalization
+                    by the Berylia government. Organized by the dissident ABC group, the protest began as a peaceful
+                    sit-in at several key government buildings. However, tensions quickly escalated when protesters,
+                    armed with homemade incendiaries and stones, clashed with law enforcement deploying tear gas and
+                    rubber bullets.
+
+                    Eyewitnesses reported chaotic scenes in the central districts, where social media livestreams
+                    captured both the fervor of the demonstrators and the stern response of security forces. Organizers
+                    argued that the protests were a necessary reaction to years of unmet promises and alleged systemic
+                    discrimination, while local officials insisted that the demonstrations were being exploited by
+                    extremist elements aiming to destabilize the region further. The rapid escalation has raised fears
+                    of a broader civil conflict, with critics warning that continued unrest could imperil not only
+                    public safety but also critical infrastructure.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/460823d8-3d02-4cc4-b5c4-1f3bc7ed2bfb_protest.png" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    In response to the unfolding crisis, high-ranking government officials have issued stern warnings
+                    against further escalation. During a televised address, the Minister of Internal Security called for
+                    immediate restraint and announced an inquiry into the alleged discriminatory practices fueling the
+                    unrest. Despite these assurances, opposition groups remain deeply skeptical. They contend that
+                    similar pledges in the past have resulted in little to no tangible change, and argue that the
+                    government's approach only serves to further alienate the ethnic Crimsonian community.
+
+                    International human rights organizations have also weighed in, expressing concern over the
+                    heavy-handed tactics used by security forces, which they fear could lead to severe human rights
+                    violations. The protests come at a particularly sensitive time, as the Prophyria region already
+                    grapples with the broader geopolitical conflict between Berylia and Crimsonia—a conflict that
+                    threatens not only political stability but also critical energy infrastructure. Analysts are urging
+                    an immediate dialogue between government representatives and community leaders to address the root
+                    causes of the unrest before the situation deteriorates further.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>Bakun</a></li>
+
+                    <li><a>protests</a></li>
+
+                    <li><a>ethnic</a></li>
+
+                    <li><a>tensions</a></li>
+
+                    <li><a>civil</a></li>
+
+                    <li><a>unrest</a></li>
+
+                    <li><a>ABC</a></li>
+
+                    <li><a>discrimination</a></li>
+
+                    <li><a>political</a></li>
+
+                    <li><a>autonomy</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>security</a></li>
+
+                    <li><a>forces</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

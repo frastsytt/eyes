@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Latest News Feed</title>
+    <link>{{ url_for('main.home', _external=True, _scheme='https' ) }}</link>
+    <description>Latest news articles from our website</description>
+    {% for story in stories %}
+    <item>
+      <title>{{ story.title | safe }}</title>
+      <link>{{ url_for('main.view_story', filename=story.filename, _external=True, _scheme='https') }}</link>
+      <description>{{ story.short_description | safe }}</description>
+      <category>{{ story.category.name if story.category else 'Uncategorized' }}</category>
+      <pubDate>{{ story.submission_date.strftime('%a, %d %b %Y %H:%M:%S GMT') }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

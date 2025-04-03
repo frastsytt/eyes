@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Economic Shockwaves: Berylia’s Natural Gas Market Reeling from Conflict Disruptions </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/59a1ba6c-7a5d-426f-97fa-aa467956923a_gaznews.png" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2024-10-23 09:13:59 | Economy | Dawn Koopal </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                The ongoing conflict in the Prophyria region is sending shockwaves through Berylia’s natural gas market.
+                Production disruptions and escalating geopolitical tensions are driving up energy prices and igniting
+                concerns over long-term economic stability both locally and globally.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    For several months, escalating conflict in the Prophyria region has taken a severe toll on Berylia’s
+                    natural gas sector. The occupation of key energy infrastructure—most notably the Galbreath 1 gas
+                    platform and the Roseiron liquefaction facility—by Crimsonian forces has led to a significant
+                    decline in production. This disruption is not only affecting domestic supply but also alarming
+                    international markets that have long relied on Berylia's steady and affordable gas exports.
+
+                    Economic analysts indicate that the reduced output has sparked immediate price hikes, affecting
+                    industries and households alike. The uncertainty over when production might return to normal has
+                    investors jittery, and regional trade partners are closely monitoring developments. With the
+                    conflict showing little sign of a swift resolution, Berylia faces mounting pressure to implement
+                    emergency measures that can stabilize the market and restore confidence among global energy
+                    consumers.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/317bcaa0-9b32-4228-aa5b-c14c4a3ab53d_gazdiagram.png"
+                    alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    In the wake of these disruptions, experts warn that the long-term economic implications could be
+                    profound. Several countries that have historically benefited from Berylia's competitive gas prices
+                    now confront the dual challenge of securing energy supplies while maintaining diplomatic ties with
+                    Crimsonia. Local businesses and energy firms are re-evaluating their strategies, with some
+                    accelerating investments in alternative energy sources and backup infrastructure.
+
+                    Government officials remain cautiously optimistic, asserting that a combination of targeted
+                    diplomatic initiatives and strategic economic policies will eventually mitigate the crisis. However,
+                    the consensus among economists is that prolonged instability in the Prophyria region could trigger
+                    broader ripple effects—impacting international trade, spurring inflation, and reshaping global
+                    energy dynamics. The current scenario underscores how deeply intertwined energy security and
+                    geopolitical stability have become in today's volatile world.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>economy</a></li>
+
+                    <li><a>natural</a></li>
+
+                    <li><a>gas</a></li>
+
+                    <li><a>energy</a></li>
+
+                    <li><a>crisis</a></li>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>production</a></li>
+
+                    <li><a>disruption</a></li>
+
+                    <li><a>gas</a></li>
+
+                    <li><a>prices</a></li>
+
+                    <li><a>geopolitical</a></li>
+
+                    <li><a>risk</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>international</a></li>
+
+                    <li><a>trade</a></li>
+
+                    <li><a>market</a></li>
+
+                    <li><a>instability</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

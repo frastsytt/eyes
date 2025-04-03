@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        {% if title %}
+        {{ title }} | Berylia's Eyes
+        {% else %}
+        Berylia's Eyes
+        {% endif %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+    <script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{{ url_for('static', filename='js/date.js') }}"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+
+</head>
+
+<body class="baseline">
+    <div class="baseline-div">
+
+        {% block add_title %}
+        {% include 'title.html' %}
+        {% endblock %}
+
+        {% block content %}
+        <div class="login-container">
+            <div class="login-box">
+                <h1>Welcome back</h1>
+                <a class="login-button" href="{{ url_for('auth.login') }}">Login</a>
+            </div>
+        </div>
+        {% endblock %}
+
+    </div>
+
+    <footer>
+        ©
+    </footer>
+
+    {% if expired %}
+    <script>
+        Toastify({
+            text: "Your session has expired!",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "right",
+            background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            stopOnFocus: true
+        }).showToast();
+    </script>
+    {% endif %}
+
+
+
+
+</body>
+
+</html>

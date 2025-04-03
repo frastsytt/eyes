@@ -1,0 +1,127 @@
+{% raw %}
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+{% endraw %}
+<div class="news-container">
+    <h1 class="news-title"> {{ news_title | safe }} </h1>
+
+    <div class="news-header-image">
+        <img src="{{ url_for('static', filename='images/news/' ~ news_title_image) }}" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> {{ news_date | safe }} | {{ news_category | safe }} | {{ news_author | safe }} </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                {{ news_short_description | safe }}
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    {{ news_story1 | safe }}
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="{{ url_for('static', filename='images/news/' ~ news_story_image) }}" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+                {% if news_video_url %}
+                <iframe width="560" height="315" src="{{ news_video_url | safe }}" title="Video related story"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen onerror="this.style.display='none';">
+                </iframe>
+                {% endif %}
+            </div>
+
+            <div class="news-content">
+                <p>
+                    {{ news_story2 | safe }}
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+                    {% for kw in news_keywords %}
+                    <li><a>{{ kw | safe }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            {% raw %}
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+            {% endraw %}
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+                {% raw %}
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+                {% endraw %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% raw %}
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}
+
+{% endraw %}

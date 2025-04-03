@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+{% endblock %}
+
+{% block more_js %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="profile-container">
+        <div class="profile-info">
+
+            <div class="profile-image">
+                <div class="avatar-wrapper">
+                    <img src="{{  url_for('static', filename='images/profile/' ~ userinfo.profile_image) }}"
+                        alt="Profile Picture">
+
+                    <label for="avatarUpload" class="avatar-upload-label">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                class="bi bi-camera" viewBox="0 0 16 16">
+                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 
+                                     2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 
+                                     0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 
+                                     2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1 
+                                     -1.414-.586l-.828-.828A2 2 0 0 0 
+                                     9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 
+                                     3.172 4z" />
+                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 
+                                     1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 
+                                     6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+                            </svg>
+                        </i>
+                    </label>
+
+                    <input type="file" id="avatarUpload" name="avatarUpload" accept="image/*" hidden>
+                </div>
+            </div>
+            <div class="profile-details">
+                <h2 class="username">{{userinfo.real_name}}</h2>
+
+                <label for="displayNameInput" class="displayed-name-label">Displayed name</label>
+                <input type="text" id="displayNameInput" name="displayName" value="{{ userinfo.username | safe }}"
+                    placeholder="Website Displayed Name" class="displayed-name-input" />
+
+                <label for="websiteEmailInput" class="displayed-name-label">Email</label>
+                <input type="text" id="websiteEmailInput" name="websiteEmail" value="{{ userinfo.email | safe }}"
+                    placeholder="Website email" readonly class="displayed-name-input" />
+
+                <button class="edit-btn">Save</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+{% endblock %}

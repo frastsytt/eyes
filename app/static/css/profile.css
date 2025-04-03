@@ -1,0 +1,275 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 45%;
+    margin-top: calc(-14rem + 1%);
+    width: 40%;
+    height: 60%;
+    box-shadow: 0 2px 5px rgba(34, 54, 119, 0.1);
+
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    border: 3px solid #ccc;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    width: 100%;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-upload-label {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.avatar-upload-label:hover {
+    background-color: #555;
+}
+
+#avatarUpload {
+    display: none;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 40px;
+    width: 60%;
+}
+
+.username {
+    font-size: 2rem;
+    align-self: center;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.displayed-name {
+    font-size: 1.4rem;
+    color: #777;
+    margin: 0;
+}
+
+
+.edit-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.displayed-name-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.displayed-name-input {
+    font-size: 1rem;
+    width: 100%;
+    height: 3rem;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 2px solid rgb(169, 166, 166);
+    padding-inline-start: 10px;
+}
+
+@media (max-width: 1800px) {
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20%;
+        margin-top: calc(-12rem + 2%);
+        width: 60%;
+        height: auto;
+        box-shadow: 0 2px 5px rgba(34, 54, 119, 0.1);
+
+    }
+
+
+    .displayed-name-input {
+        font-size: 1rem;
+        width: 100%;
+        height: 3rem;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 2px solid rgb(169, 166, 166);
+        padding-inline-start: 10px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10%;
+        margin-top: calc(-12rem + 2%);
+        width: 80%;
+        height: auto;
+        box-shadow: 0 2px 5px rgba(34, 54, 119, 0.1);
+
+    }
+
+    .profile-info {
+        display: flex;
+        align-items: center;
+        border: 3px solid #ccc;
+        padding: 30px;
+        border-radius: 8px;
+        background-color: #fdfdfd;
+        width: 100%;
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        width: 130px;
+        height: 130px;
+    }
+
+    .avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .avatar-upload-label {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: #333;
+        color: #fff;
+        padding: 8px 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .avatar-upload-label:hover {
+        background-color: #555;
+    }
+
+    #avatarUpload {
+        display: none;
+    }
+
+    .profile-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 40px;
+        width: 60%;
+    }
+
+    .username {
+        font-size: 2rem;
+        align-self: center;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .displayed-name {
+        font-size: 1.4rem;
+        color: #777;
+        margin: 0;
+    }
+
+
+    .edit-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        margin-left: -2rem;
+        width: 120%;
+    }
+
+    .edit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .displayed-name-label {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-left: -2rem;
+    }
+
+    .displayed-name-input {
+        font-size: 1rem;
+        width: 120%;
+        height: 3rem;
+        margin-left: -2rem;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 2px solid rgb(169, 166, 166);
+        padding-inline-start: 10px;
+    }
+
+
+
+}
+
+@media (max-width: 550px) {
+
+    .displayed-name-input {
+        font-size: 0.6rem;
+        width: 190px;
+        height: 3rem;
+        margin-left: -2rem;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 2px solid rgb(169, 166, 166);
+        padding-inline-start: 10px;
+    }
+
+
+}

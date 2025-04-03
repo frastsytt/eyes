@@ -1,0 +1,795 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.cdnfonts.com/css/proclamate");
+@import url("https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Satisfy&display=swap");
+
+.Table {
+    display: table;
+}
+
+.baseline-title {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    width: 100%;
+    background: rgb(82, 78, 78);
+    place-items: center;
+    padding-top: 5px;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+}
+
+.baseline-row {
+    display: table-row;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 300px;
+}
+
+.Cell {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.baseline {
+    background-color: whitesmoke;
+    color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.baseline-div {
+    background-color: whitesmoke;
+    color: black;
+    display: table;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scrollbar-width: none;
+}
+
+.baseline-div::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.special-title {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 7rem;
+    letter-spacing: -0.3rem;
+    z-index: 1;
+}
+
+.special-title span {
+    margin: 0 auto;
+    margin-left: 0.3em;
+    display: inline-block;
+    position: relative;
+}
+
+.special-title span:before {
+    content: "";
+    position: absolute;
+    top: -0.2em;
+    left: -0.2em;
+    width: 100%;
+    height: 100%;
+    padding: 0.2em;
+    z-index: -1;
+}
+
+.special-title span:nth-child(1) {
+    font-family: "Proclamate Light", sans-serif;
+    color: #ffc863;
+}
+
+.special-title span:nth-child(1)::before {
+    background: #332929;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 83%);
+}
+
+.special-title span:nth-child(2) {
+    font-style: italic;
+    font-family: "Playfair Display", serif;
+    color: #023020;
+    text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+}
+
+.special-title span:nth-child(2)::before {
+    background: #f5deb3;
+}
+
+.special-title span:nth-child(3) {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #28282B;
+}
+
+.special-title span:nth-child(3)::before {
+    background: #a52a2a;
+    clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+}
+
+.special-title span:nth-child(4) {
+    font-family: "Love Ya Like A Sister", cursive;
+    color: #22232e;
+}
+
+.special-title span:nth-child(4)::before {
+    background-image: radial-gradient(rgba(0, 194, 203, 0.7) 3px, transparent 3px);
+    background-color: #e0ffff;
+    background-size: 10px 10px;
+    clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+}
+
+.special-title span:nth-child(5) {
+    font-family: "Poppins", serif;
+    color: #00c2cb;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+}
+
+.special-title span:nth-child(5)::before {
+    background: rgba(0, 194, 203, 0.7);
+    clip-path: polygon(0 24%, 100% 1%, 100% 86%, 0 82%);
+}
+
+.special-title span:nth-child(6) {
+    font-style: italic;
+    font-family: "Playfair Display", serif;
+    color: #ce9e1d;
+    text-shadow: 0.02em 0.02em 0 #2d35d7, 0.03em 0.03em 0 #a52a2a;
+}
+
+.special-title span:nth-child(6)::before {
+    background: rgba(49, 50, 59, 0.7);
+    clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+}
+
+.special-title span:nth-child(7) {
+    font-family: "Indie Flower", cursive;
+    color: #6a5acd;
+    position: relative;
+    display: inline-block;
+}
+
+.special-title span:nth-child(7)::before {
+    background: rgba(170, 197, 48, 0.7);
+    clip-path: polygon(0 44%, 100% 0%, 88% 86%, 0 88%);
+}
+
+.special-title span:nth-child(8) {
+    font-family: "Proclamate Light", sans-serif;
+    color: #ffc863;
+}
+
+.special-title span:nth-child(8)::before {
+    background: #332929;
+    clip-path: polygon(0 0, 100% 0%, 70% 70%, 0 63%);
+}
+
+.special-title span:nth-child(9) {
+    font-family: "Poppins", serif;
+    color: #00c2cb;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+}
+
+.special-title span:nth-child(9)::before {
+    background: rgba(0, 194, 203, 0.7);
+    clip-path: polygon(0 24%, 100% 20%, 100% 86%, 0 82%);
+}
+
+
+
+.special-title span:nth-child(11) {
+    font-style: italic;
+    font-family: "Playfair Display", serif;
+    color: #023020;
+    text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+}
+
+.special-title span:nth-child(11)::before {
+    background: #f5deb3;
+}
+
+.special-title span:nth-child(12) {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: #28282B;
+}
+
+.special-title span:nth-child(12)::before {
+    background: #9c3f3f;
+    clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+}
+
+.special-title span:nth-child(13) {
+    font-family: "Love Ya Like A Sister", cursive;
+    color: #c53bb3;
+}
+
+.special-title span:nth-child(13)::before {
+    background-image: radial-gradient(rgba(28, 89, 149, 0.7) 3px, transparent 3px);
+    background-color: #e0ffff;
+    background-size: 10px 10px;
+    clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+}
+
+.special-title span:nth-child(14) {
+    font-style: italic;
+    font-family: "Playfair Display", serif;
+    color: #3c76d8;
+    text-shadow: 0.02em 0.02em 0 #d72dc3, 0.03em 0.03em 0 #a52a2a;
+}
+
+.special-title span:nth-child(14)::before {
+    background: rgba(96, 97, 113, 0.7);
+    clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+}
+
+
+footer {
+    background: #343a40;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media (max-width: 1434px) {
+    .special-title {
+        padding-top: 2rem;
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        font-size: 3rem;
+        letter-spacing: -0.3rem;
+        z-index: 1;
+    }
+
+    .special-title span {
+        margin: 0 auto;
+        margin-left: 0.3em;
+        display: inline-block;
+        position: relative;
+    }
+
+    .special-title span:before {
+        content: "";
+        position: absolute;
+        top: -0.2em;
+        left: -0.2em;
+        width: 100%;
+        height: 100%;
+        padding: 0.2em;
+        z-index: -1;
+    }
+
+    .special-title span:nth-child(1) {
+        font-family: "Proclamate Light", sans-serif;
+        color: #ffc863;
+    }
+
+    .special-title span:nth-child(1)::before {
+        background: #332929;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 83%);
+    }
+
+    .special-title span:nth-child(2) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #023020;
+        text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(2)::before {
+        background: #f5deb3;
+    }
+
+    .special-title span:nth-child(3) {
+        font-family: "Satisfy", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: #28282B;
+    }
+
+    .special-title span:nth-child(3)::before {
+        background: #a52a2a;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(4) {
+        font-family: "Love Ya Like A Sister", cursive;
+        color: #22232e;
+    }
+
+    .special-title span:nth-child(4)::before {
+        background-image: radial-gradient(rgba(0, 194, 203, 0.7) 3px, transparent 3px);
+        background-color: #e0ffff;
+        background-size: 10px 10px;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(5) {
+        font-family: "Poppins", serif;
+        color: #00c2cb;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+    }
+
+    .special-title span:nth-child(5)::before {
+        background: rgba(0, 194, 203, 0.7);
+        clip-path: polygon(0 24%, 100% 1%, 100% 86%, 0 82%);
+    }
+
+    .special-title span:nth-child(6) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #ce9e1d;
+        text-shadow: 0.02em 0.02em 0 #2d35d7, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(6)::before {
+        background: rgba(49, 50, 59, 0.7);
+        clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+    }
+
+    .special-title span:nth-child(7) {
+        font-family: "Indie Flower", cursive;
+        color: #6a5acd;
+        position: relative;
+        display: inline-block;
+    }
+
+    .special-title span:nth-child(7)::before {
+        background: rgba(170, 197, 48, 0.7);
+        clip-path: polygon(0 44%, 100% 0%, 88% 86%, 0 88%);
+    }
+
+    .special-title span:nth-child(8) {
+        font-family: "Proclamate Light", sans-serif;
+        color: #ffc863;
+    }
+
+    .special-title span:nth-child(8)::before {
+        background: #332929;
+        clip-path: polygon(0 0, 100% 0%, 70% 70%, 0 63%);
+    }
+
+    .special-title span:nth-child(9) {
+        font-family: "Poppins", serif;
+        color: #00c2cb;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+    }
+
+    .special-title span:nth-child(9)::before {
+        background: rgba(0, 194, 203, 0.7);
+        clip-path: polygon(0 24%, 100% 20%, 100% 86%, 0 82%);
+    }
+
+
+
+    .special-title span:nth-child(11) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #023020;
+        text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(11)::before {
+        background: #f5deb3;
+    }
+
+    .special-title span:nth-child(12) {
+        font-family: "Satisfy", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: #28282B;
+    }
+
+    .special-title span:nth-child(12)::before {
+        background: #9c3f3f;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(13) {
+        font-family: "Love Ya Like A Sister", cursive;
+        color: #c53bb3;
+    }
+
+    .special-title span:nth-child(13)::before {
+        background-image: radial-gradient(rgba(28, 89, 149, 0.7) 3px, transparent 3px);
+        background-color: #e0ffff;
+        background-size: 10px 10px;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(14) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #3c76d8;
+        text-shadow: 0.02em 0.02em 0 #d72dc3, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(14)::before {
+        background: rgba(96, 97, 113, 0.7);
+        clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+    }
+
+}
+
+@media (max-width: 572px) {
+    .special-title {
+        padding-top: 3rem;
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        font-size: 2rem;
+        letter-spacing: -0.3rem;
+        z-index: 1;
+    }
+
+    .special-title span {
+        margin: 0 auto;
+        margin-left: 0.3em;
+        display: inline-block;
+        position: relative;
+    }
+
+    .special-title span:before {
+        content: "";
+        position: absolute;
+        top: -0.2em;
+        left: -0.2em;
+        width: 100%;
+        height: 100%;
+        padding: 0.2em;
+        z-index: -1;
+    }
+
+    .special-title span:nth-child(1) {
+        font-family: "Proclamate Light", sans-serif;
+        color: #ffc863;
+    }
+
+    .special-title span:nth-child(1)::before {
+        background: #332929;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 83%);
+    }
+
+    .special-title span:nth-child(2) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #023020;
+        text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(2)::before {
+        background: #f5deb3;
+    }
+
+    .special-title span:nth-child(3) {
+        font-family: "Satisfy", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: #28282B;
+    }
+
+    .special-title span:nth-child(3)::before {
+        background: #a52a2a;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(4) {
+        font-family: "Love Ya Like A Sister", cursive;
+        color: #22232e;
+    }
+
+    .special-title span:nth-child(4)::before {
+        background-image: radial-gradient(rgba(0, 194, 203, 0.7) 3px, transparent 3px);
+        background-color: #e0ffff;
+        background-size: 10px 10px;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(5) {
+        font-family: "Poppins", serif;
+        color: #00c2cb;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+    }
+
+    .special-title span:nth-child(5)::before {
+        background: rgba(0, 194, 203, 0.7);
+        clip-path: polygon(0 24%, 100% 1%, 100% 86%, 0 82%);
+    }
+
+    .special-title span:nth-child(6) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #ce9e1d;
+        text-shadow: 0.02em 0.02em 0 #2d35d7, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(6)::before {
+        background: rgba(49, 50, 59, 0.7);
+        clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+    }
+
+    .special-title span:nth-child(7) {
+        font-family: "Indie Flower", cursive;
+        color: #6a5acd;
+        position: relative;
+        display: inline-block;
+    }
+
+    .special-title span:nth-child(7)::before {
+        background: rgba(170, 197, 48, 0.7);
+        clip-path: polygon(0 44%, 100% 0%, 88% 86%, 0 88%);
+    }
+
+    .special-title span:nth-child(8) {
+        font-family: "Proclamate Light", sans-serif;
+        color: #ffc863;
+    }
+
+    .special-title span:nth-child(8)::before {
+        background: #332929;
+        clip-path: polygon(0 0, 100% 0%, 70% 70%, 0 63%);
+    }
+
+    .special-title span:nth-child(9) {
+        font-family: "Poppins", serif;
+        color: #00c2cb;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-stroke: 0.07em rgba(237, 10, 139, 0.7);
+    }
+
+    .special-title span:nth-child(9)::before {
+        background: rgba(0, 194, 203, 0.7);
+        clip-path: polygon(0 24%, 100% 20%, 100% 86%, 0 82%);
+    }
+
+
+
+    .special-title span:nth-child(11) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #023020;
+        text-shadow: 0.02em 0.02em 0 #a52a2a, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(11)::before {
+        background: #f5deb3;
+    }
+
+    .special-title span:nth-child(12) {
+        font-family: "Satisfy", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: #28282B;
+    }
+
+    .special-title span:nth-child(12)::before {
+        background: #9c3f3f;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(13) {
+        font-family: "Love Ya Like A Sister", cursive;
+        color: #c53bb3;
+    }
+
+    .special-title span:nth-child(13)::before {
+        background-image: radial-gradient(rgba(28, 89, 149, 0.7) 3px, transparent 3px);
+        background-color: #e0ffff;
+        background-size: 10px 10px;
+        clip-path: polygon(20% 0%, 99% 0, 100% 100%, 0% 100%);
+    }
+
+    .special-title span:nth-child(14) {
+        font-style: italic;
+        font-family: "Playfair Display", serif;
+        color: #3c76d8;
+        text-shadow: 0.02em 0.02em 0 #d72dc3, 0.03em 0.03em 0 #a52a2a;
+    }
+
+    .special-title span:nth-child(14)::before {
+        background: rgba(96, 97, 113, 0.7);
+        clip-path: polygon(0 7%, 100% 14%, 100% 86%, 0 100%);
+    }
+
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#notificationList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#notificationList li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#notificationList li:last-child {
+    border-bottom: none;
+}
+
+#chatIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #343a40;
+    color: #fff;
+    font-size: 2rem;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: blink 2s infinite;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#chatWindow {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 500px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+}
+
+
+#chatHeader {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatHeader h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#closeChat {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+#chatMessages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+#chatInputContainer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+#sendChat {
+    padding: 8px 12px;
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#sendChat:hover {
+    background-color: #343a40;
+}
+
+
+@media (max-width: 768px) {
+    #chatWindow {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    #chatHeader {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="admin-dashboard">
+    <a href="{{ url_for('admin.view_news') }}" class="dashboard-button">
+        See All the News
+    </a>
+    <a href="{{ url_for('admin.review_news') }}" class="dashboard-button">
+        Submitted Stories
+    </a>
+    <a href="{{ url_for('admin.new_story') }}" class="dashboard-button">
+        Create Story
+    </a>
+    <a href="{{ url_for('main.user') }}" class="dashboard-button">
+        Default Site
+    </a>
+    <a href="{{ url_for('profile.profile') }}" class="dashboard-button">
+        Profile
+    </a>
+
+</div>
+{% endblock %}

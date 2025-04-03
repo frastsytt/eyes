@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Crimsonian Underground: ABC’s Expanding Smuggling Network Fuels Regional Instability </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/65e9b8bc-14b9-48b2-8f44-bb99e4ac9382_smuggling.jpg" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2024-09-17 15:02:47 | Politics | Chloe Howell </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                New intelligence reveals that the separatist group ABC has significantly expanded its smuggling
+                operations—trafficking arms and narcotics across the Prophyria region. These illicit activities are
+                increasingly funding destabilizing actions and exacerbating the conflict between Berylia and Crimsonia.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    Recent investigations have uncovered a rapidly growing underground network run by the ABC. Law
+                    enforcement agencies in Berylia have executed multiple raids over the past months, targeting
+                    smuggling routes that crisscross the disputed Prophyria region. Confidential sources indicate that
+                    ABC has diversified its operations by not only trafficking traditional contraband but also by
+                    establishing sophisticated channels for arms, weapons, and narcotics.
+
+                    The funds generated through these illicit trades are believed to finance a wide array of
+                    destabilizing activities—from fueling protest logistics and propaganda campaigns to supporting cyber
+                    operations aimed at undermining key government infrastructure. Despite several successful
+                    interdictions, the group's decentralized structure and covert transit routes have made it extremely
+                    challenging for authorities to fully dismantle the network.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/3b3477d6-d0ce-4577-bd11-5341d6cb6f7b_narcotics.png" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    The ramifications of ABC’s smuggling enterprise extend well beyond its immediate funding benefits.
+                    Local economies in the Prophyria region are already reeling from the disruptions caused by the
+                    clandestine trade. Merchants and transport operators report delays and irregularities as criminal
+                    elements use legitimate businesses as covers for their operations.
+
+                    Regional analysts warn that the intertwining of arms trafficking, narcotics sales, and political
+                    manipulation is destabilizing state authority and fostering an environment ripe for further violence
+                    and corruption. With calls growing for an international coalition to address the nexus between
+                    smuggling and insurgency, experts stress that resolving the underlying ethnic and territorial
+                    disputes is essential to restoring stability in the region.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>ABC</a></li>
+
+                    <li><a>smuggling</a></li>
+
+                    <li><a>arms</a></li>
+
+                    <li><a>trafficking</a></li>
+
+                    <li><a>narcotics</a></li>
+
+                    <li><a>separatist</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>criminal</a></li>
+
+                    <li><a>network</a></li>
+
+                    <li><a>instability</a></li>
+
+                    <li><a>underground</a></li>
+
+                    <li><a>trade</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Digital Dissent: Social Media Trends Redefine Activism in Berylia </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/ce3cf09a-2183-4363-96ea-7d9d84f57778_activism_hastag.png"
+            alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2025-02-03 13:12:24 | Trends | Chloe Howell </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                A surge in digital activism is reshaping the political landscape in Berylia. Trending hashtags and viral
+                campaigns on social media are galvanizing protest movements and exposing the ongoing conflict in the
+                Prophyria region.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    In recent months, digital platforms have emerged as a new battleground for political activism in
+                    Berylia. With traditional protest methods facing heightened security measures, citizens and
+                    influencers alike are turning to social media to voice their dissent. Hashtags such as
+                    #FreeProphyria and #StandWithBerylia have rapidly gained momentum, uniting a diverse community
+                    demanding transparency and change in government policy toward the Prophyria region.
+
+                    These digital movements are not just limited to online debates; coordinated social media campaigns
+                    have organized virtual rallies, livestreamed protests, and distributed multimedia content that
+                    exposes alleged governmental neglect and ethnic discrimination. Activists claim that these online
+                    efforts help bypass state-controlled media narratives while drawing international attention to the
+                    conflict. The viral nature of these trends demonstrates how digital dissent can amplify grassroots
+                    voices, making the once-sidelined issues of regional autonomy and ethnic rights central to national
+                    conversations.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/cde05c7a-1d52-4a0b-92d6-f2c3b5ff91e9_activism.jpg" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    While digital dissent is empowering citizens, it is also drawing countermeasures from both state
+                    actors and separatist groups. Government officials have attempted to discredit these movements by
+                    alleging that extremist elements and foreign influencers are orchestrating a disinformation campaign
+                    to destabilize public order. At the same time, reports indicate that organized groups, with
+                    suspected links to CrimsonProfit, are exploiting these trends to inject misleading content, further
+                    polarizing online discourse.
+
+                    Experts warn that although the momentum of these social media trends reflects a growing desire for
+                    democratic reform, the dual-edged nature of digital activism requires careful scrutiny. As the
+                    online narrative continues to evolve, the long-term impact of this digital dissent will depend on
+                    the ability of civil society to distinguish genuine grassroots movements from coordinated
+                    disinformation efforts. The unfolding digital landscape in Berylia not only redefines modern
+                    activism but also sets a precedent for how political trends can shape real-world outcomes in times
+                    of geopolitical tension.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>trends</a></li>
+
+                    <li><a>social</a></li>
+
+                    <li><a>media</a></li>
+
+                    <li><a>digital</a></li>
+
+                    <li><a>activism</a></li>
+
+                    <li><a>online</a></li>
+
+                    <li><a>movements</a></li>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>#FreeProphyria</a></li>
+
+                    <li><a>#StandWithBerylia</a></li>
+
+                    <li><a>digital</a></li>
+
+                    <li><a>dissent</a></li>
+
+                    <li><a>disinformation</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

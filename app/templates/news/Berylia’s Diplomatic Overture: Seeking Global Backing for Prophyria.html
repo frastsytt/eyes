@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Berylia’s Diplomatic Overture: Seeking Global Backing for Prophyria </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/5b31714f-6a44-410a-ac41-bec3b4a5d0c2_diplomacy-berylia.jpg"
+            alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2024-09-13 15:34:21 | Politics | Leah Cox </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                In a bold diplomatic initiative, Berylia’s government is actively engaging international partners to
+                build support for its plan to reclaim the disputed Prophyria region, amid intensifying tensions with
+                Crimsonia.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    Facing a protracted stalemate in the Prophyria region, Berylia has stepped up its diplomatic efforts
+                    to shift the balance of power. High-ranking officials have initiated a series of high-level meetings
+                    with representatives from the UN, key EU member states, and influential neutral powers such as
+                    Revalia. During a press conference last week, the Minister of Foreign Affairs declared, "Our
+                    commitment to a peaceful resolution is unwavering, and we need the international community to help
+                    us protect our sovereignty."
+                    The government is emphasizing its adherence to international law and its transparent handling of the
+                    conflict. Talks focus on garnering support for a multinational monitoring mission to oversee a
+                    ceasefire and eventual negotiations. Experts note that this outreach is designed not only to counter
+                    Crimsonia's narrative—which claims that the situation is an internal matter—but also to ensure that
+                    Berylia’s natural gas exports remain secure in the global market.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/d80ef9b6-e1a1-4c5c-b764-0c9152201cd3_debate.jpg" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    The diplomatic overture comes at a time when public opinion within Berylia is sharply divided. While
+                    ethnic Berylians widely support the government’s stand, ethnic Crimsonians in Prophyria remain
+                    skeptical of any external interference. International analysts suggest that the strategic engagement
+                    with Revalia—whose undersea cables are critical for internet connectivity—is a calculated move to
+                    ensure communication lines remain open during negotiations.
+                    In addition, diplomatic envoys are working behind the scenes to highlight Crimsonia’s artificial
+                    island constructions and recent military incursions as violations of international maritime law.
+                    This multi-pronged approach aims to isolate Crimsonia politically while rallying global opinion in
+                    favor of Berylia’s territorial integrity. As negotiations progress, the international community
+                    watches closely, aware that a peaceful settlement in Prophyria could set a precedent for conflict
+                    resolution in other contested regions.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>diplomacy</a></li>
+
+                    <li><a>Prophyria</a></li>
+
+                    <li><a>Crimsonia</a></li>
+
+                    <li><a>international</a></li>
+
+                    <li><a>support</a></li>
+
+                    <li><a>ceasefire</a></li>
+
+                    <li><a>UN</a></li>
+
+                    <li><a>EU</a></li>
+
+                    <li><a>conflict</a></li>
+
+                    <li><a>resolution</a></li>
+
+                    <li><a>Revalia</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

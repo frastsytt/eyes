@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        {% if title %}
+        {{ title }} | Berylia's Eyes
+        {% else %}
+        Berylia's Eyes
+        {% endif %}
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+    <script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/date.js') }}"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+
+</head>
+
+<body class="baseline">
+    <div class="baseline-div">
+
+        {% block add_title %}
+        {% include 'title.html' %}
+        {% endblock %}
+
+
+
+        {% block content %}
+        <div class="error-content" style="text-align: center; margin-top: 5rem; font-size: 3rem;">
+            <p>Server error...</p>
+            <p><a href="{{ url_for('main.home') }}">Back to home page.</a></p>
+        </div>
+        {% endblock %}
+
+
+    </div>
+
+    <footer>
+        ©
+    </footer>
+
+
+
+
+</body>
+
+</html>

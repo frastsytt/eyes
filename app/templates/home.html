@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+{% endblock %}
+
+{% block more_js %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="home-container">
+
+    <section class="hero">
+        <div class=" hero-content">
+            <h2>Your Trusted News Source in the Age of Misinformation</h2>
+            <p>
+                In these turbulent times, when fake news and disinformation threaten to obscure the truth, Berylia Eyes
+                stands as the official source of accurate, verified, and impartial news. As Berylia’s primary news
+                outlet, we are committed to delivering timely updates and in-depth analysis on everything from domestic
+                politics
+                to international affairs.
+            </p>
+            <a href="{{ url_for('main.search') }}" class="read-more">Explore More</a>
+        </div>
+    </section>
+
+    <div class="main-columns">
+        <div class="main-content">
+            <section class="about-us">
+                <h2>About Berylia Eyes</h2>
+                <p>
+                    Berylia Eyes is the official news portal of Berylia—a parliamentary democracy recognized by the
+                    United Nations
+                    and progressing toward full EU membership. We are dedicated to providing you with reliable
+                    information in a time
+                    when unverified reports and bias can easily mislead.
+                </p>
+                <p>
+                    Whether you are looking for breaking news, comprehensive reports, or expert analyses, trust Berylia
+                    Eyes to keep
+                    you informed with integrity and clarity.
+                </p>
+            </section>
+
+            {% if politics %}
+            <section class="featured-news">
+                <h2>Political News</h2>
+                <div class="news-item">
+                    <img src="{{ url_for('static', filename='images/news/' ~ politics.first_image) }}"
+                        alt="Political News">
+                    <div class="news-content">
+                        <h3><a href="{{ url_for('main.view_story', filename=politics.filename) }}">{{ politics.title |
+                                safe }}</a></h3>
+                        <p class="meta">{{ politics.submission_date | safe }} | {{ politics.category.name | safe }} | {{
+                            politics.author | safe }}</p>
+                        <p class="description">
+                            {{ politics.short_description|truncate(150) }}
+                        </p>
+                        <a href="{{ url_for('main.view_story', filename=politics.filename) }}" class="read-more">Read
+                            More</a>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+
+            {% if economy %}
+            <section class="featured-news">
+                <h2>Economical News</h2>
+                <div class="news-item">
+                    <img src="{{ url_for('static', filename='images/news/' ~ economy.first_image) }}"
+                        alt="Economical News">
+                    <div class="news-content">
+                        <h3><a href="{{ url_for('main.view_story', filename=economy.filename) }}">{{ economy.title |
+                                safe }}</a></h3>
+                        <p class="meta">{{ economy.submission_date | safe }} | {{ economy.category.name | safe }} | {{
+                            economy.author | safe }}</p>
+                        <p class="description">
+                            {{ economy.short_description|truncate(150) }}
+                        </p>
+                        <a href="{{ url_for('main.view_story', filename=economy.filename) }}" class="read-more">Read
+                            More</a>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+
+
+            {% if technology %}
+            <section class="featured-news">
+                <h2>Technology News</h2>
+                <div class="news-item">
+                    <img src="{{ url_for('static', filename='images/news/' ~ technology.first_image) }}"
+                        alt="Technology News">
+                    <div class="news-content">
+                        <h3><a href="{{ url_for('main.view_story', filename=technology.filename) }}">{{ technology.title
+                                |
+                                safe }}</a></h3>
+                        <p class="meta">{{ technology.submission_date | safe }} | {{ technology.category.name | safe }}
+                            | {{
+                            technology.author | safe }}</p>
+                        <p class="description">
+                            {{ technology.short_description|truncate(150) }}
+                        </p>
+                        <a href="{{ url_for('main.view_story', filename=technology.filename) }}" class="read-more">Read
+                            More</a>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </div>
+
+        <div class="sidebar">
+            <section class="latest-news">
+                <h2>Latest News</h2>
+                <ul>
+                    {% if latest_news %}
+                    {% for l_n in latest_news %}
+                    <li>
+                        <a href="{{ url_for('main.view_story', filename=l_n.filename) }}">{{ l_n.title }}</a>
+                        <span class="news-date">{{ l_n.submission_date | safe }}</span>
+                    </li>
+                    {% endfor %}
+
+                    {% endif %}
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <section class="newsletter">
+        <h2>Subscribe to Newsletter</h2>
+        <p>Receive the latest news and analysis directly in your inbox.</p>
+        <form method="POST" action="{{ url_for('main.subscribe_newsletter') }}">
+            <input type="text" name="subEmail" id="subEmail" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+</div>
+
+
+{% if subscribed %}
+<script>
+    Toastify({
+        text: "Subscribed to newsletter!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true
+    }).showToast();
+</script>
+{% endif %}
+
+{% if uploaded %}
+<script>
+    Toastify({
+        text: "Story submitted!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true
+    }).showToast();
+</script>
+{% endif %}
+
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

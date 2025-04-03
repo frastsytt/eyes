@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/create_news.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/review_news.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/create_news_from_story.js') }}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="upload-news-container">
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Submission <br> Date</th>
+                <th>Story</th>
+                <th>Contact <br> Info</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{ story.submission_date.strftime("%b %d %Y, %H:%M") | safe }}</td>
+                <td style="text-align: justify;">{{ story.content | safe }}</td>
+                <td>{{ story.contact_info | safe }}</td>
+                <td>
+                    {% for image in story.images %}
+                    <img src="{{ url_for('static', filename='images/received_stories/' ~ image.filename) }}"
+                        alt="Story image" class="admin-story-image" />
+                    <br />
+                    {% endfor %}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <h1 class="upload-title">Create a New Story</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+
+        <div class="form-group">
+            <label for="contactInfo">Title:</label>
+            <input type="text" id="newsTitle" name="newsTitle" placeholder="Title for the story" required>
+            <p class="hint">Please provide a compelling title for your story.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="contactInfo">Author name:</label>
+            <input type="text" id="newsAuthor" name="newsAuthor" placeholder="Enter the author's name" required>
+            <p class="hint">Please provide the name of the author for this story.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Politics">Politics</option>
+                <option value="Economy">Economy</option>
+                <option value="Technology">Technology</option>
+                <option value="Innovation">Innovation</option>
+                <option value="Startups">Startups</option>
+                <option value="Trends">Trends</option>
+                <option value="Others">Others</option>
+            </select>
+            <p class="hint">Choose the category that best fits your story.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="images">Title Image:</label>
+            <input type="file" id="title_image" name="title_image" accept="image/*" required>
+            <p class="hint">Provide a representative title image.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="storyText">Short description:</label>
+            <textarea id="newsShortDescription" name="newsShortDescription" rows="6"
+                placeholder="Please provide a short description of the story..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="newsStoryText1">Story I:</label>
+            <textarea id="newsStoryText1" name="newsStoryText1" rows="6" placeholder="First part of the story..."
+                required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="images">Story Image:</label>
+            <input type="file" id="story_image" name="story_image" accept="image/*" required>
+            <p class="hint">Provide a representative story image.</p>
+        </div>
+
+
+        <div class="form-group">
+            <label for="contactInfo">Embedded Video:</label>
+            <input type="text" id="newsVideoUrl" name="newsVideoUrl" placeholder="Embedded video url...">
+            <p class="hint">Please provide the embedded video url. (Optional)</p>
+        </div>
+
+        <div class="form-group">
+            <label for="newsStoryText1">Story II:</label>
+            <textarea id="newsStoryText2" name="newsStoryText2" rows="6" placeholder="Second part of the story..."
+                required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="contactInfo">Keywords:</label>
+            <input type="text" id="newsKeywords" name="newsKeywords" placeholder="Keywords relevant for the story"
+                required>
+            <p class="hint">Please provide keywords relevant for the story, delimited by commas.</p>
+        </div>
+
+        <button type="submit" class="btn-submit">Post Story</button>
+    </form>
+</div>
+
+<div id="imageModal" class="image-modal">
+    <span class="close">&times;</span>
+    <a id="downloadLink1" href="#" download>Download</a>
+    <img class="modal-content" id="modalImg">
+    <a id="downloadLink2" href="#" download>Download</a>
+</div>
+
+
+{% if warning %}
+<script> alert("This page is not for mobile users..."); </script>
+{% endif %}
+
+{% if error %}
+<script>
+    Toastify({
+        text: "Something went wrong!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true
+    }).showToast();
+</script>
+{% endif %}
+
+{% endblock %}

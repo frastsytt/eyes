@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block add_title %}
+{% include 'title.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="upload-news-container">
+
+    <h1 class="upload-title">Submit a New Story</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+
+        <div class="form-group">
+            <label for="storyText">Story:</label>
+            <textarea id="storyText" name="storyText" rows="6" placeholder="Tell us about your news..."
+                required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="images">Attach Images:</label>
+            <input type="file" id="images" name="images" multiple accept="image/*">
+            <p class="hint">You can select multiple images by holding Ctrl (or Cmd on Mac) while clicking.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="contactInfo">Contact Info:</label>
+            <input type="text" id="contactInfo" name="contactInfo" placeholder="Email or phone number" required>
+            <p class="hint">So readers or admins can reach you if needed.</p>
+        </div>
+
+        <div class="form-group terms">
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+            <label for="agreeTerms">
+                I agree to the <a href="{{ url_for('main.termsandconditions') }}" target="_blank">Terms and
+                    Conditions</a> and
+                consent to the usage of my data.
+            </label>
+        </div>
+
+
+        <button type="submit" class="btn-submit">Submit Story</button>
+    </form>
+</div>
+
+
+{% if error %}
+<script>
+    Toastify({
+        text: "Something went wrong!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true
+    }).showToast();
+</script>
+{% endif %}
+
+{% if successfully %}
+<script>
+    Toastify({
+        text: "Story shared successfully!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        stopOnFocus: true
+    }).showToast();
+</script>
+{% endif %}
+
+
+{% endblock %}

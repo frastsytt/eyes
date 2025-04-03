@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+{% endblock %}
+
+{% block more_js %}
+<script src="https://code.berylia.org/jquery/v3.7.1/js/jquery-3.7.1.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="news-container">
+    <h1 class="news-title"> Startup Surge: Berylia’s Tech Entrepreneurs Innovate Amid Conflict Challenges </h1>
+
+    <div class="news-header-image">
+        <img src="/static/images/news/e890e157-6315-4770-a597-73cc60659cc4_entreprenours.png" alt="Main header image" />
+    </div>
+
+    <div class="news-box">
+        <div class="news-inner-content">
+            <div class="news-metadata">
+                <div class="metadata-row2">
+                    <span class="metadata-category">
+                        <p> 2025-01-23 17:35:00 | Startups | Chloe Howell </p>
+                    </span>
+                </div>
+            </div>
+
+            <p class="short-description">
+                Amid ongoing geopolitical tensions and economic uncertainties, a vibrant wave of tech startups in
+                Berylia is emerging to offer groundbreaking solutions in cybersecurity, logistics, and digital
+                communications, fueling a grassroots innovation movement.
+            </p>
+
+
+            <div class="news-content">
+                <p>
+                    The persistent instability in the Prophyria region has spurred an entrepreneurial revolution in
+                    Berylia. Local tech innovators, many of whom are young entrepreneurs and university graduates, are
+                    leveraging the challenges posed by the conflict to develop disruptive solutions that address
+                    real-world problems. Startups like SecureNet Solutions and LogiChain are creating bespoke
+                    cybersecurity tools and advanced logistics platforms, respectively, to help businesses navigate the
+                    disruptions caused by cyber-attacks and supply chain interruptions.
+                    In an exclusive interview, the founder of SecureNet Solutions remarked, "Necessity is the mother of
+                    invention. Our tools are designed not only to protect digital assets but also to empower
+                    organizations to operate securely in an increasingly hostile environment." This surge in innovation
+                    is being fueled by government-backed incubators, venture capital, and international partnerships,
+                    which see great potential in technology-driven solutions to transform Berylia’s crisis into an
+                    opportunity.
+                </p>
+            </div>
+
+            <div class="news-inline-image">
+                <img src="/static/images/news/7f93b850-3035-4271-84f2-37c8baede230_startups.jpg" alt="Related image" />
+            </div>
+
+            <div class="news-inline-video">
+
+            </div>
+
+            <div class="news-content">
+                <p>
+                    The startup ecosystem in Berylia is rapidly evolving into a critical component of the nation’s
+                    economic recovery strategy. Collaborative initiatives between private sector players and public
+                    institutions are being established to integrate these innovative technologies into national security
+                    frameworks and economic policy. Analysts predict that the success of these startups will not only
+                    mitigate the immediate impacts of the conflict but also reposition Berylia as a hub for
+                    technological innovation in Eastern Europe.
+                    As entrepreneurial success stories continue to emerge, the government is considering additional
+                    measures to foster a supportive regulatory environment and attract further investment. With these
+                    efforts, Berylia’s tech startups are poised to drive long-term transformation, offering a beacon of
+                    hope amid uncertainty and setting new benchmarks for resilience and innovation in challenging times.
+                </p>
+            </div>
+
+            <div class="news-keywords">
+                <h4>Keywords</h4>
+                <ul>
+
+                    <li><a>Berylia</a></li>
+
+                    <li><a>startups</a></li>
+
+                    <li><a>technology</a></li>
+
+                    <li><a>innovation</a></li>
+
+                    <li><a>entrepreneurship</a></li>
+
+                    <li><a>cybersecurity</a></li>
+
+                    <li><a>logistics</a></li>
+
+                    <li><a>digital</a></li>
+
+                    <li><a>communications</a></li>
+
+                    <li><a>conflict</a></li>
+
+                    <li><a>recovery</a></li>
+
+                    <li><a>venture</a></li>
+
+                    <li><a>capital</a></li>
+
+                </ul>
+            </div>
+
+
+
+            <div class="comments-section">
+                <div class="comment-form">
+                    <h4>Leave a comment</h4>
+                    <form action="{{ url_for('main.post_comment', story_id=current_story.id) }}" method="POST">
+
+                        <label for="commentText">Comment:</label>
+                        <textarea id="commentText" name="commentText" rows="4" required></textarea>
+
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+
+                <h3>Comments</h3>
+                <div class="comment-list">
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <strong class="comment-author">{{ com.author | safe }}</strong>
+                            <span class="comment-timestamp">{{ com.timestamp.strftime('%d.%m.%Y %H:%M') | safe }}</span>
+                        </div>
+                        <p class="comment-content">{{ com.content | safe }}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p>There are no comments for this story.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="news-other-links">
+            <h3>More News</h3>
+            <ul>
+
+                {% if latest_stories %}
+                {% for l_st in latest_stories %}
+                <li><a href="{{ url_for('main.view_story', filename=l_st.filename) }}">{{l_st.title | safe}}</a></li>
+                {% endfor %}
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/comments.js') }}"></script>
+{% endblock %}

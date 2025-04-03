@@ -1,0 +1,11 @@
+flask
+flask_sqlalchemy
+sqlalchemy
+authlib
+pyjwt
+pika
+python-dotenv
+pymysql
+paho-mqtt
+requests
+pyjwt
